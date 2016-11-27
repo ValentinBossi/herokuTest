@@ -9,22 +9,6 @@ var pgp = require('pg-promise')(options);
 var connectionString = 'postgres://emadnzteospxpj:lBeoj_V8XMdzrS5fxa_-fbKhh8@ec2-54-235-89-113.compute-1.amazonaws.com:5432/dcr3lknftj4n6j';
 var db = pgp(connectionString);
 
-function getAllPuppies(req, res, next) {
-    db.any('select * from pups')
-        .then(function(data) {
-            res.status(200)
-                .json({
-                    status: 'success',
-                    data: data,
-                    message: 'Retrieved ALL puppies'
-                });
-            console.log(data[0]);
-        })
-        .catch(function(err) {
-            return next(err);
-        });
-}
-
 function getSinglePuppy(req, res, next) {
     var pupID = parseInt(req.params.id);
     db.one('select * from pups where id = $1', pupID)
