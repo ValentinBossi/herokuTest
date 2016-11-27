@@ -77,7 +77,6 @@ function removePuppy(req, res, next) {
 
 
 module.exports = {
-    getAllPuppies: getAllPuppies,
     getSinglePuppy: getSinglePuppy,
     createPuppy: createPuppy,
     updatePuppy: updatePuppy,
